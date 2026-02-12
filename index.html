@@ -1,0 +1,642 @@
+<!DOCTYPE html>
+<html lang="ru">
+<!-- <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Мой Сайт</title>
+    <style>
+        /* СБРОС СТИЛЕЙ И БАЗОВЫЕ НАСТРОЙКИ */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        :root {
+            --primary-color: #2c3e50;
+            --secondary-color: #3498db;
+            --accent-color: #e74c3c;
+            --light-color: #ecf0f1;
+            --dark-color: #2c3e50;
+            --success-color: #2ecc71;
+            --text-color: #333;
+            --text-light: #7f8c8d;
+            --shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+            --shadow-hover: 0 6px 12px rgba(0, 0, 0, 0.15);
+            --transition: all 0.3s ease;
+            --border-radius: 8px;
+            --container-width: 1200px;
+        }
+        
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+            line-height: 1.6;
+            color: var(--text-color);
+            background-color: #f8f9fa;
+            overflow-x: hidden;
+        }
+        
+        /* КОНТЕЙНЕР ДЛЯ ЦЕНТРИРОВАНИЯ КОНТЕНТА */
+        .container {
+            width: 90%;
+            max-width: var(--container-width);
+            margin: 0 auto;
+            padding: 0 15px;
+        }
+        
+        /* ШАПКА САЙТА И НАВИГАЦИЯ */
+        header {
+            background-color: white;
+            box-shadow: var(--shadow);
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+        }
+        
+        nav {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 20px 0;
+        }
+        
+        .logo {
+            font-size: 1.8rem;
+            font-weight: 700;
+            color: var(--primary-color);
+        }
+        
+        .nav-links {
+            display: flex;
+            list-style: none;
+        }
+        
+        .nav-links li {
+            margin-left: 30px;
+        }
+        
+        .nav-links a {
+            text-decoration: none;
+            color: var(--dark-color);
+            font-weight: 500;
+            font-size: 1.05rem;
+            transition: var(--transition);
+            position: relative;
+            padding: 5px 0;
+        }
+        
+        .nav-links a:hover,
+        .nav-links a.active {
+            color: var(--secondary-color);
+        }
+        
+        .nav-links a::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 0;
+            height: 2px;
+            background-color: var(--secondary-color);
+            transition: var(--transition);
+        }
+        
+        .nav-links a:hover::after,
+        .nav-links a.active::after {
+            width: 100%;
+        }
+        
+        .hamburger {
+            display: none;
+            background: none;
+            border: none;
+            font-size: 1.5rem;
+            cursor: pointer;
+            color: var(--primary-color);
+        }
+        
+        /* СЕКЦИИ САЙТА */
+        section {
+            padding: 80px 0;
+        }
+        
+        .section-title {
+            text-align: center;
+            margin-bottom: 50px;
+        }
+        
+        .section-title h2 {
+            font-size: 2.5rem;
+            color: var(--primary-color);
+            margin-bottom: 15px;
+            position: relative;
+            display: inline-block;
+        }
+        
+        .section-title h2::after {
+            content: '';
+            position: absolute;
+            bottom: -10px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 70px;
+            height: 4px;
+            background-color: var(--secondary-color);
+            border-radius: 2px;
+        }
+        
+        .section-title p {
+            color: var(--text-light);
+            margin-top: 20px;
+            max-width: 600px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+        
+        /* ГЛАВНЫЙ ЭКРАН (HERO) */
+        #hero {
+            background: linear-gradient(rgba(44, 62, 80, 0.85), rgba(44, 62, 80, 0.9)), url('https://placehold.co/1920x1080') center/cover no-repeat;
+            color: white;
+            text-align: center;
+            padding: 150px 0;
+        }
+        
+        .hero-content h1 {
+            font-size: 3.5rem;
+            margin-bottom: 20px;
+            animation: fadeInDown 1s ease-out;
+        }
+        
+        .hero-content p {
+            font-size: 1.5rem;
+            margin-bottom: 40px;
+            max-width: 700px;
+            margin-left: auto;
+            margin-right: auto;
+            animation: fadeInUp 1s ease-out 0.2s both;
+        }
+        
+        .btn {
+            display: inline-block;
+            background-color: var(--secondary-color);
+            color: white;
+            padding: 12px 30px;
+            border-radius: 50px;
+            text-decoration: none;
+            font-weight: 600;
+            font-size: 1.1rem;
+            transition: var(--transition);
+            border: 2px solid var(--secondary-color);
+            cursor: pointer;
+            animation: fadeIn 1s ease-out 0.4s both;
+        }
+        
+        .btn:hover {
+            background-color: #2980b9;
+            transform: translateY(-3px);
+            box-shadow: var(--shadow-hover);
+        }
+        
+        .btn-outline {
+            background-color: transparent;
+            border-color: white;
+            color: white;
+            margin-left: 15px;
+        }
+        
+        .btn-outline:hover {
+            background-color: white;
+            color: var(--primary-color);
+        }
+        
+        /* ГАЛЕРЕЯ ФОТОГРАФИЙ */
+        .gallery {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+            gap: 25px;
+            margin-top: 30px;
+        }
+        
+        .gallery-item {
+            border-radius: var(--border-radius);
+            overflow: hidden;
+            box-shadow: var(--shadow);
+            transition: var(--transition);
+            height: 250px;
+            background-color: #e0e0e0;
+            background-size: cover;
+            background-position: center;
+        }
+        
+        .gallery-item:hover {
+            transform: translateY(-10px);
+            box-shadow: var(--shadow-hover);
+        }
+        
+        /* СЕКЦИЯ ВИДЕО */
+        .video-container {
+            max-width: 800px;
+            margin: 0 auto;
+            position: relative;
+            padding-top: 56.25%; /* Соотношение 16:9 */
+            background-color: #000;
+            border-radius: var(--border-radius);
+            overflow: hidden;
+            box-shadow: var(--shadow);
+        }
+        
+        .video-container video {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            display: block;
+        }
+        
+        /* ТЕКСТОВАЯ СЕКЦИЯ */
+        .text-content {
+            background-color: white;
+            border-radius: var(--border-radius);
+            padding: 40px;
+            box-shadow: var(--shadow);
+            margin-top: 30px;
+            line-height: 1.8;
+        }
+        
+        .text-content h3 {
+            color: var(--primary-color);
+            margin-bottom: 20px;
+            font-size: 1.8rem;
+        }
+        
+        .text-content p {
+            margin-bottom: 15px;
+        }
+        
+        /* ФУТЕР */
+        footer {
+            background-color: var(--dark-color);
+            color: white;
+            text-align: center;
+            padding: 40px 0;
+            margin-top: 50px;
+        }
+        
+        .footer-content p {
+            margin-top: 15px;
+            color: #bdc3c7;
+        }
+        
+        /* АНИМАЦИИ */
+        @keyframes fadeInDown {
+            from {
+                opacity: 0;
+                transform: translateY(-30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+        
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+        
+        @keyframes fadeIn {
+            from { opacity: 0; }
+            to { opacity: 1; }
+        }
+        
+        /* АДАПТИВНЫЙ ДИЗАЙН */
+        @media (max-width: 992px) {
+            .section-title h2 {
+                font-size: 2.2rem;
+            }
+            
+            .hero-content h1 {
+                font-size: 2.8rem;
+            }
+            
+            .hero-content p {
+                font-size: 1.3rem;
+            }
+        }
+        
+        @media (max-width: 768px) {
+            .hamburger {
+                display: block;
+            }
+            
+            .nav-links {
+                position: fixed;
+                top: 80px;
+                right: -100%;
+                flex-direction: column;
+                background-color: white;
+                width: 100%;
+                text-align: center;
+                transition: var(--transition);
+                box-shadow: 0 10px 10px rgba(0, 0, 0, 0.1);
+                padding: 30px 0;
+            }
+            
+            .nav-links.active {
+                right: 0;
+            }
+            
+            .nav-links li {
+                margin: 15px 0;
+            }
+            
+            .hero-content h1 {
+                font-size: 2.3rem;
+            }
+            
+            .hero-content p {
+                font-size: 1.15rem;
+            }
+            
+            .btn {
+                display: block;
+                width: 80%;
+                margin: 15px auto;
+                padding: 10px;
+            }
+            
+            .btn-outline {
+                margin-left: 0;
+            }
+            
+            section {
+                padding: 60px 0;
+            }
+        }
+        
+        @media (max-width: 480px) {
+            .section-title h2 {
+                font-size: 1.9rem;
+            }
+            
+            .hero-content h1 {
+                font-size: 2rem;
+            }
+            
+            .text-content {
+                padding: 25px;
+            }
+            
+            .gallery {
+                grid-template-columns: 1fr;
+            }
+        }
+        
+        /* СТИЛИ ДЛЯ ПЛЕЙСХОЛДЕРОВ И КОММЕНТАРИЕВ */
+        .placeholder {
+            background: linear-gradient(45deg, #3498db, #2c3e50);
+            color: white;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+            font-weight: 500;
+            height: 100%;
+            padding: 15px;
+        }
+        
+        .instructions {
+            background-color: #e3f2fd;
+            border-left: 4px solid var(--secondary-color);
+            padding: 20px;
+            margin: 25px 0;
+            border-radius: 0 var(--border-radius) var(--border-radius) 0;
+        }
+        
+        .instructions h4 {
+            color: var(--secondary-color);
+            margin-bottom: 8px;
+        }
+        
+        .instructions ul {
+            padding-left: 20px;
+            margin-top: 10px;
+        }
+        
+        .instructions li {
+            margin-bottom: 5px;
+        }
+    </style>
+</head> -->
+
+
+<body>
+    <!-- ШАПКА САЙТА С НАВИГАЦИЕЙ -->
+    <header>
+        <div class="container">
+            <nav>
+                <div class="logo">Мой Сайт</div>
+                <button class="hamburger" id="hamburger">☰</button>
+                <ul class="nav-links" id="nav-links">
+                    <li><a href="#hero" class="active">Главная</a></li>
+                    <li><a href="#photos">Фотографии</a></li>
+                    <li><a href="#videos">Видео</a></li>
+                    <li><a href="#text">Текст</a></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+
+    <!-- ГЛАВНЫЙ ЭКРАН -->
+    <section id="hero">
+        <div class="container">
+            <div class="hero-content">
+                <h1>Добро пожаловать на наш сайт</h1>
+                <p>Здесь вы найдете фотографии, видео и полезную информацию. Сайт постоянно обновляется и работает 24/7.</p>
+                <a href="#photos" class="btn">Смотреть фото</a>
+                <a href="#videos" class="btn btn-outline">Видео</a>
+            </div>
+        </div>
+    </section>
+
+    <!-- СЕКЦИЯ ФОТОГРАФИЙ -->
+    <section id="photos">
+        <div class="container">
+            <div class="section-title">
+                <h2>Фотографии</h2>
+                <p>Наша коллекция фотографий. Чтобы добавить свои фото, замените изображения в разделе ниже.</p>
+            </div>
+            
+            <div class="instructions">
+                <h4>ИНСТРУКЦИЯ ПО РЕДАКТИРОВАНИЮ:</h4>
+                <p>Чтобы добавить свои фотографии:</p>
+                <ul>
+                    <li>Замените ссылки в атрибуте <code>style="background-image: url('...')"</code> на пути к вашим изображениям</li>
+                    <li>Добавьте или удалите блоки <code>&lt;div class="gallery-item"&gt;&lt;/div&gt;</code> по необходимости</li>
+                    <li>Для оптимального отображения используйте изображения с соотношением сторон 1:1</li>
+                </ul>
+            </div>
+            
+            <div class="gallery">
+                <!-- ЗАМЕНИТЕ ЭТИ БЛОКИ НА ВАШИ ФОТОГРАФИИ -->
+                <div class="gallery-item" style="background-image: url('https://placehold.co/600x600/3498db/ffffff?text=Фото+1')"></div>
+                <div class="gallery-item" style="background-image: url('https://placehold.co/600x600/2ecc71/ffffff?text=Фото+2')"></div>
+                <div class="gallery-item" style="background-image: url('https://placehold.co/600x600/e74c3c/ffffff?text=Фото+3')"></div>
+                <div class="gallery-item" style="background-image: url('https://placehold.co/600x600/f39c12/ffffff?text=Фото+4')"></div>
+                <div class="gallery-item" style="background-image: url('https://placehold.co/600x600/9b59b6/ffffff?text=Фото+5')"></div>
+                <div class="gallery-item" style="background-image: url('https://placehold.co/600x600/1abc9c/ffffff?text=Фото+6')"></div>
+                <!-- КОНЕЦ ФОТОГРАФИЙ -->
+            </div>
+        </div>
+    </section>
+
+    <!-- СЕКЦИЯ ВИДЕО -->
+    <section id="videos">
+        <div class="container">
+            <div class="section-title">
+                <h2>Видео</h2>
+                <p>Наши видео материалы. Добавляйте свои видео по инструкции ниже.</p>
+            </div>
+            
+            <div class="instructions">
+                <h4>ИНСТРУКЦИЯ ПО РЕДАКТИРОВАНИЮ:</h4>
+                <p>Чтобы добавить свое видео:</p>
+                <ul>
+                    <li>Замените <code>src="ваше-видео.mp4"</code> на путь к вашему видеофайлу</li>
+                    <li>Убедитесь, что видео в формате MP4 для максимальной совместимости</li>
+                    <li>Можно добавить несколько видео, скопировав блок <code>&lt;div class="video-container"&gt;&lt;/div&gt;</code></li>
+                </ul>
+            </div>
+            
+            <div class="video-container">
+                <!-- ЗАМЕНИТЕ ИСТОЧНИК ВИДЕО НА СВОЙ -->
+                <video controls poster="https://placehold.co/800x450/3498db/ffffff?text=Превью+видео">
+                    <source src="https://commondatastorage.googleapis.com/gtv-videos-bucket/sample/BigBuckBunny.mp4" type="video/mp4">
+                    Ваш браузер не поддерживает видео в формате HTML5.
+                </video>
+                <!-- КОНЕЦ ВИДЕО -->
+            </div>
+        </div>
+    </section>
+
+    <!-- ТЕКСТОВАЯ СЕКЦИЯ -->
+    <section id="text">
+        <div class="container">
+            <div class="section-title">
+                <h2>Полезная информация</h2>
+                <p>Здесь вы можете разместить любой текстовый контент. Инструкция по редактированию ниже.</p>
+            </div>
+            
+            <div class="instructions">
+                <h4>ИНСТРУКЦИЯ ПО РЕДАКТИРОВАНИЮ:</h4>
+                <p>Чтобы добавить свой текст:</p>
+                <ul>
+                    <li>Замените содержимое внутри блока <code>&lt;div class="text-content"&gt;&lt;/div&gt;</code></li>
+                    <li>Вы можете использовать любые HTML-теги для форматирования (заголовки, списки, ссылки и т.д.)</li>
+                    <li>Для добавления нескольких текстовых блоков скопируйте весь блок <code>&lt;div class="text-content"&gt;&lt;/div&gt;</code></li>
+                </ul>
+            </div>
+            
+            <div class="text-content">
+                <!-- ЗАМЕНИТЕ ЭТОТ ТЕКСТ НА СВОЙ КОНТЕНТ -->
+                <h3>О нас</h3>
+                <p>Это пример текстового блока. Здесь может быть любая информация о вашей компании, проекте или услугах. Текст легко редактируется - просто замените этот контент на свой.</p>
+                <p>Мы создали этот сайт с возможностью простого редактирования. Все секции имеют понятные комментарии и инструкции по замене контента.</p>
+                <p>Для добавления списков используйте теги &lt;ul&gt; и &lt;li&gt;:</p>
+                <ul>
+                    <li>Простое редактирование без технических знаний</li>
+                    <li>Адаптивный дизайн для всех устройств</li>
+                    <li>Современный и чистый интерфейс</li>
+                    <li>Постоянная работа без перебоев</li>
+                </ul>
+                <!-- КОНЕЦ ТЕКСТА -->
+            </div>
+        </div>
+    </section>
+
+    <!-- ФУТЕР -->
+    <footer>
+        <div class="container">
+            <div class="footer-content">
+                <div class="logo">Мой Сайт</div>
+                <p>© 2026 Все права защищены. Сайт работает 24/7 без перерывов.</p>
+                <p>Для редактирования содержимого откройте этот HTML-файл в любом текстовом редакторе.</p>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        // МОБИЛЬНОЕ МЕНЮ
+        const hamburger = document.getElementById('hamburger');
+        const navLinks = document.getElementById('nav-links');
+        
+        hamburger.addEventListener('click', () => {
+            navLinks.classList.toggle('active');
+            hamburger.innerHTML = navLinks.classList.contains('active') ? '✕' : '☰';
+        });
+        
+        // ЗАКРЫТИЕ МЕНЮ ПРИ КЛИКЕ НА ССЫЛКУ
+        document.querySelectorAll('.nav-links a').forEach(link => {
+            link.addEventListener('click', () => {
+                navLinks.classList.remove('active');
+                hamburger.innerHTML = '☰';
+            });
+        });
+        
+        // ПЛАВНАЯ ПРОКРУТКА
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function(e) {
+                e.preventDefault();
+                
+                const targetId = this.getAttribute('href');
+                if(targetId === '#') return;
+                
+                const targetElement = document.querySelector(targetId);
+                if(targetElement) {
+                    window.scrollTo({
+                        top: targetElement.offsetTop - 80,
+                        behavior: 'smooth'
+                    });
+                    
+                    // АКТИВНАЯ ССЫЛКА В НАВИГАЦИИ
+                    document.querySelectorAll('.nav-links a').forEach(link => {
+                        link.classList.remove('active');
+                    });
+                    this.classList.add('active');
+                }
+            });
+        });
+        
+        // АВТОМАТИЧЕСКОЕ ОБНОВЛЕНИЕ АКТИВНОЙ ССЫЛКИ ПРИ ПРОКРУТКЕ
+        window.addEventListener('scroll', () => {
+            let currentSection = '#hero';
+            
+            document.querySelectorAll('section').forEach(section => {
+                const sectionTop = section.offsetTop - 100;
+                if(pageYOffset >= sectionTop) {
+                    currentSection = #${section.getAttribute('id')};
+                }
+            });
+            
+            document.querySelectorAll('.nav-links a').forEach(link => {
+                link.classList.remove('active');
+                if(link.getAttribute('href') === currentSection) {
+                    link.classList.add('active');
+                }
+            });
+        });
+        
+        // ИНИЦИАЛИЗАЦИЯ АКТИВНОЙ ССЫЛКИ
+        document.addEventListener('DOMContentLoaded', () => {
+            document.querySelector('.nav-links a[href="#hero"]').classList.add('active');
+        });
+    </script>
+</body>
+</html>
