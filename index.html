@@ -113,7 +113,56 @@
             </div>
         </div>
     </section>
+<!-- Вертикальная галерея из 7 фото -->
+<section id="vertical-photos">
+    <div class="container">
+        <div class="section-title">
+            <h2>Списки захороненных</h2>
+        </div>
+        <div class="vertical-gallery">
+            <!-- ЗАМЕНИТЕ НАЗВАНИЯ ФАЙЛОВ НА СВОИ -->
+            <div class="vertical-item"><img src="photo1.jpg" alt="Фото 1"></div>
+            <div class="vertical-item"><img src="photo2.jpg" alt="Фото 2"></div>
+            <div class="vertical-item"><img src="photo3.jpg" alt="Фото 3"></div>
+            <div class="vertical-item"><img src="photo4.jpg" alt="Фото 4"></div>
+            <div class="vertical-item"><img src="photo5.jpg" alt="Фото 5"></div>
+            <div class="vertical-item"><img src="photo6.jpg" alt="Фото 6"></div>
+            <div class="vertical-item"><img src="photo7.jpg" alt="Фото 7"></div>
+        </div>
+    </div>
+</section>
 
+<style>
+.vertical-gallery {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+    margin-top: 30px;
+}
+.vertical-item {
+    width: 100%;
+    max-width: 400px;
+    margin: 0 auto;
+    border-radius: 8px;
+    overflow: hidden;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+}
+.vertical-item img {
+    width: 100%;
+    height: auto;
+    display: block;
+    transition: transform 0.3s ease;
+}
+.vertical-item img:hover {
+    transform: scale(1.02);
+}
+@media (max-width: 768px) {
+    .vertical-item {
+        max-width: 100%;
+    }
+}
+</style>
+    
     <section id="text">
         <div class="container">
             <div class="section-title">
